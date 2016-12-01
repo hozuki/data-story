@@ -1,0 +1,24 @@
+{
+  "name": "data-story",
+  "version": "1.0.0",
+  "description": "Data story",
+  "main": "build/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "George Wu <uiharu@buaa.edu.cn>",
+  "license": "MIT",
+  "repository": "https://github.com/hozuki/data-story",
+  "devDependencies": {
+    "csv-parser": "^1.11.0",
+    "gulp": "^3.9.1",
+    "gulp-typescript": "^3.1.3",
+    "leftpad": "0.0.0",
+    "typescript": "^2.0.10"
+  },
+  "dependencies": {
+    "d3": "^3.5.17",
+    "jquery": "^3.1.1",
+    "topojson": "^1.1.0"
+  }
+}
