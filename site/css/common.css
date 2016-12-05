@@ -1,0 +1,16 @@
+* {
+    font-family: Roboto, Helvetica, Helvetica, "Helvetica Neue", "Lucida Sans", "Microsoft Yahei", "Microsoft YaHei UI", SimHei, sans-serif;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+span {
+    cursor: default;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+}

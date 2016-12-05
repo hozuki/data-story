@@ -1,0 +1,78 @@
+#constraint-container {
+    position: fixed;
+    height: 100%;
+    width: 100%;
+}
+
+#world-svg {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+}
+
+#tt-d3-graph {
+    text-align: center;
+}
+
+.axis--x path {
+    display: none;
+}
+
+.d3-line-bmi {
+    fill: none;
+    stroke: steelblue;
+    stroke-width: 2px;
+}
+
+.overlay {
+    position: absolute;
+    display: block;
+    height: 100%;
+    width: 100%;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    background-color: transparent;
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
+
+#overlay-click {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+}
+
+#tt-container {
+    display: inline-block;
+    position: fixed;
+    background-color: #000;
+    background-color: rgba(0, 0, 0, 0.9);
+    border-radius: 1rem;
+    width: 500px;
+    height: 400px;
+    color: #808080;
+}
+
+#tt-country {
+    display: inline-block;
+    margin-left: 1.2rem;
+    margin-top: 1.2rem;
+    font-size: 24pt;
+    color: #937E98;
+}
+
+#tt-policies {
+    display: inline-block;
+    list-style-type: armenian;
+}
+
+.tt-policy-description {
+    color: white;
+}
+
+.tt-policy-readable {
+    color: #EE4444;
+}
