@@ -10,9 +10,8 @@ const DsMapBuilder = (function () {
     function DsMapBuilder() {
         /**
          * @type {Selection}
-         * @private
          */
-        this._svg = null;
+        this.svg = null;
         /**
          * @type {*[]}
          * @private
@@ -61,6 +60,11 @@ const DsMapBuilder = (function () {
      */
     DsMapBuilder.SVG_CONTAINER_ID_SELECTOR = "#canvas-svg";
     /**
+     * @const
+     * @type {String}
+     */
+    DsMapBuilder.CONTINENT_CLASS_PREFIX = "cont-";
+    /**
      * @readonly
      * @static
      * @type {{color: Number, pos: Number}[]}
@@ -93,7 +97,6 @@ const DsMapBuilder = (function () {
         }
         for (var i = steps.length - 2; i >= 0; --i) {
             if (percent >= steps[i].pos) {
-                console.log("percent:" + percent, "index:" + i, "pos:" + steps[i].pos)
                 const periodLength = steps[i + 1].pos - steps[i].pos;
                 const ratio = (percent - steps[i].pos) / periodLength;
                 const mixed = DsUtils.alphaBlend(steps[i].color, steps[i + 1].color, ratio);
@@ -109,19 +112,19 @@ const DsMapBuilder = (function () {
      * @param dataRows
      * @memberOf {DsMapBuilder}
      */
-    DsMapBuilder.prototype.buildMap = function (errInfo, dataRows) {
+    DsMapBuilder.prototype.prepareMap = function (errInfo, dataRows) {
         this._dataRows = dataRows;
         /**
          * @type {d3.Selection<SVGElement>}
          */
         const svg = d3.select(DsMapBuilder.SVG_CONTAINER_ID_SELECTOR).append("svg");
-        this._svg = svg;
+        this.svg = svg;
         const width = this._config.width = 1200, height = this._config.height = 900;
         svg.attr("width", width + "px").attr("height", height + "px");
 
         // https://vida.io/gists/TWNbJrHvRcR3DeAZq
         // Prepare world data
-        const projection = d3.geo.equirectangular()
+        const projection = d3.geo.orthographic()
             .scale((width + 1) / 2 / Math.PI)
             .translate([width / 2, height / 2])
             .precision(0.1);
@@ -134,7 +137,9 @@ const DsMapBuilder = (function () {
             .datum(graticule)
             .attr("class", "graticule")
             .attr("d", geoPath);
+    };
 
+    DsMapBuilder.prototype.buildMap = function () {
         // Build a world map!
         d3.json(DsMapBuilder.MAP_JSON_URL, this.__buildGeoElements.bind(this));
     };
@@ -146,7 +151,7 @@ const DsMapBuilder = (function () {
      * @static
      */
     DsMapBuilder.prototype.__buildGeoElements = function (err, world) {
-        const svg = this._svg;
+        const svg = this.svg;
         const dataRows = this._dataRows;
         const geoPath = this._geoPath;
         const graticule = this._graticule;
@@ -172,7 +177,19 @@ const DsMapBuilder = (function () {
         countryElements
             .enter()
             .insert("path")
-            .attr("class", "country")
+            .attr("class", function (d) {
+                const classes = ["country"];
+                const rowIndex = dataRows.findIndex(function (item) {
+                    return item[0] === d.properties.name;
+                });
+                if (rowIndex >= 0) {
+                    const row = dataRows[rowIndex];
+                    const continent = String(row[13]);
+                    const continentClass = DsMapBuilder.CONTINENT_CLASS_PREFIX + continent.toLowerCase().replace(" ", "-");
+                    classes.push(continentClass);
+                }
+                return classes.join(" ");
+            })
             .attr("d", geoPath)
             .attr("id", function (d, i) {
                 return d.id;
@@ -190,7 +207,8 @@ const DsMapBuilder = (function () {
                     html += " (Not Found)";
                 } else {
                     var row = dataRows[rowIndex];
-                    const hospitalCols = [8, 9, 10, 11, 12];
+                    // const hospitalCols = [8, 9, 10, 11, 12];
+                    const hospitalCols = [2];
                     var skip = false;
                     for (var j = 0; j < hospitalCols.length; ++j) {
                         if (row[hospitalCols[j]] === null) {
@@ -233,7 +251,8 @@ const DsMapBuilder = (function () {
             });
 
         const countryHospitals = [];
-        const hospitalCols = [8, 9, 10, 11, 12];
+        //const hospitalCols = [8, 9, 10, 11, 12];
+        const hospitalCols = [2];
         for (var i = 0; i < dataRows.length; ++i) {
             const row = dataRows[i];
             var skip = false;
@@ -275,7 +294,8 @@ const DsMapBuilder = (function () {
                     return "lightblue";
                 }
                 var row = dataRows[rowIndex];
-                const hospitalCols = [8, 9, 10, 11, 12];
+                // const hospitalCols = [8, 9, 10, 11, 12];
+                const hospitalCols = [2];
                 for (var j = 0; j < hospitalCols.length; ++j) {
                     if (row[hospitalCols[j]] === null) {
                         return "#ccc";
@@ -285,7 +305,6 @@ const DsMapBuilder = (function () {
                 for (var j = 0; j < hospitalCols.length; ++j) {
                     value += row[hospitalCols[j]] === null ? 0 : row[hospitalCols[j]];
                 }
-                console.log("value:" + value, "min:" + hospitalMin, "max:" + hospitalMax);
                 return DsMapBuilder.__makeRegionColor(value, hospitalMin, hospitalMax);
             });
 

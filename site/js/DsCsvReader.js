@@ -57,14 +57,15 @@ const DsCsvReader = (function () {
         "Density per 1M population: health centres, year 2010",
         "Density per 1M population: district/rural hospitals, year 2010",
         "Density per 1M population: provincial hospitals, year 2010",
-        "Density per 1M population: specialized hospitals, year 2010"
+        "Density per 1M population: specialized hospitals, year 2010",
+        "cont"
     ];
 
     /**
      * @const
      * @type {String}
      */
-    DsCsvReader.CSV_PATH = "../datasheets-essence-nov29.csv";
+    DsCsvReader.CSV_PATH = "../data/datasheets-essence-dec01.csv";
 
     return DsCsvReader;
 })();
