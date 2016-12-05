@@ -188,4 +188,4 @@ const countryText = {
     "gb": "UK"
 };
 
-main();
+document.body.onload = main;
