@@ -190,19 +190,6 @@ function hideGraph() {
     $(".overlay").hide();
 }
 
-function main() {
-    hideGraph();
-    var svgElem = document.getElementById("world-svg");
-    svgElem.contentWindow.addEventListener("click", function () {
-        const countryCodeList = ["de", "cn", "us", "nz", "ae", "gb"];
-        const n = d3.randomUniform(countryCodeList.length)() | 0;
-        console.log(n);
-        showGraph(countryCodeList[n]);
-    });
-    $("#overlay-click").on("click", hideGraph);
-    $("#tt-container").draggable();
-}
-
 const policies = JSON.parse(sessionStorage.getItem("tobacco-policy"));
 const policyText = {
     env: {
@@ -250,23 +237,55 @@ const countryText = {
 
 document.body.onload = main;
 
-window.addEventListener("keydown",
-    /**
-     * @param ev {KeyboardEvent}
-     */
-    function (ev) {
-        var code = ev.keyCode;
-        switch (code) {
-            case 37: // L
-            case 38: // U
-                location.assign("index.html");
-                break;
-            case 32:
-            case 39: // R
-            case 40:
-                location.assign("page2.html");
-                break;
-            default:
-                break;
+function main() {
+    hideGraph();
+    // var svgElem = document.getElementById("world-svg");
+    // svgElem.contentWindow.addEventListener("click", function () {
+    //     const countryCodeList = ["de", "cn", "us", "nz", "ae", "gb"];
+    //     const n = d3.randomUniform(countryCodeList.length)() | 0;
+    //     console.log(n);
+    //     showGraph(countryCodeList[n]);
+    // });
+    $("#overlay-click").on("click", hideGraph);
+    $("#tt-container").draggable();
+
+    const svgDocument = document.getElementById("world-svg").contentWindow.document;
+    const countryCodes = Object.keys(countryText);
+    for (var i = 0; i < countryCodes.length; ++i) {
+        const classSelector = ".code-" + countryCodes[i];
+        const elements = svgDocument.querySelectorAll(classSelector);
+        for (var j = 0; j < elements.length; ++j) {
+            elements[j].style.cursor = "hand";
+            elements[j].addEventListener("click", function () {
+                var className = this.getAttribute("class");
+                const code = className.substring(5);
+                if (code) {
+                    showGraph(code);
+                }
+            });
         }
-    });
+    }
+}
+
+window.addEventListener("keydown", onNavigate);
+
+/**
+ * @param ev {KeyboardEvent}
+ */
+function onNavigate(ev) {
+    console.log(location.href);
+    var code = ev.keyCode;
+    switch (code) {
+        case 37: // L
+        case 38: // U
+            location.assign("index.html");
+            break;
+        case 32:
+        case 39: // R
+        case 40:
+            location.assign("page2.html");
+            break;
+        default:
+            break;
+    }
+}

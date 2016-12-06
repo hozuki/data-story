@@ -25,7 +25,11 @@ body {
 }
 
 #flex-table tr:nth-child(2) {
-    background-color: green;
+
+}
+
+#pattern-cont {
+    display: none;
 }
 
 .d3-map {
