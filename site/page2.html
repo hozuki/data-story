@@ -3,8 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link href="css/common.css" type="text/css" rel="stylesheet"/>
+    <link href="css/page2.css" type="text/css" rel="stylesheet"/>
+    <script src="libs/d3-4.4.0/d3.js"></script>
+    <script src="libs/jquery-3.1.1/jquery.js"></script>
+    <script src="libs/jquery-ui-1.12.1/jquery-ui.js"></script>
+    <script src="libs/topojson-1.6.27/topojson.js"></script>
+    <script src="libs/PapaParse-4.1.0/papaparse.js"></script>
 </head>
 <body>
-
+<div id="constraint-container" class="expand-all">
+    <table id="flex-table" class="expand-all">
+        <tr>
+            <td>
+                <div id="d3-bar-graph-cont" class="expand-all"></div>
+            </td>
+            <td>
+                <div id="d3-map-cont" class="expand-all"></div>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <div id="d3-line-graph-cont" class="expand-all"></div>
+            </td>
+        </tr>
+    </table>
+</div>
+<script src="js/page2.js"></script>
 </body>
 </html>

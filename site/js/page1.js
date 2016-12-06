@@ -11,34 +11,36 @@ function showGraph(code, position) {
     $(".overlay").show();
 
     function createGraph() {
-        var svgContainer = d3.select("#tt-d3-graph");
-        var svg = svgContainer.append("svg");
+        const svgContainer = d3.select("#tt-d3-graph");
+        const svg = svgContainer.append("svg");
         svg.attr("width", "400").attr("height", "150");
-        setBmiData(svg);
+        const width = svg.attr("width");
+        const height = svg.attr("height");
+        const margins = {top: 20, right: 20, bottom: 30, left: 50};
+        svg.attr("transform", "translate(" + margins.left + "," + margins.top + ")");
+        setBmiData(svg, width, height);
+        setTobaccoData(svg, width, height);
     }
 
-    function setBmiData(svg) {
-        const parseTime = function (input) {
-            return new Date(Date.parse(input));
-        };
+    /**
+     *
+     * @param svg {Selection}
+     * @param width {Number}
+     * @param height {Number}
+     */
+    function setBmiData(svg, width, height) {
         // BMI > 30
         const csvText = sessionStorage.getItem("bmi30");
         const csv = parseCsv(csvText, code);
-        const width = svg.attr("width");
-        const height = svg.attr("height");
-        const margin = {top: 20, right: 20, bottom: 30, left: 50};
-        svg.attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-        var xScale = d3.scaleTime()
+        const xScale = d3.scaleTime()
             .rangeRound([0, width])
             .domain(d3.extent(csv, function (d) {
                 return parseTime(d.year);
             }));
-        var yScale = d3.scaleLinear()
+        const yScale = d3.scaleLinear()
             .rangeRound([height, 0])
-            .domain([0, d3.max(csv, function (d) {
-                return d.mean;
-            }) * 1.2]);
-        var line = d3.line()
+            .domain([0, 100]);
+        const line = d3.line()
             .x(function (d) {
                 return xScale(parseTime(d.year));
             }).y(function (d) {
@@ -51,7 +53,7 @@ function showGraph(code, position) {
         const yAxis = d3.axisLeft()
             .scale(yScale)
             .ticks(5);
-        var g = svg.append("g");
+        const g = svg.append("g");
         g.append("path")
             .datum(csv)
             .attr("class", "d3-line-bmi")
@@ -63,6 +65,57 @@ function showGraph(code, position) {
         svg.append("g")
             .attr("class", "y axis")
             .call(yAxis);
+    }
+
+    /**
+     *
+     * @param svg {Selection}
+     * @param width {Number}
+     * @param height {Number}
+     */
+    function setTobaccoData(svg, width, height) {
+        const csvText = sessionStorage.getItem("t15");
+        const csvFemale = parseCsv(csvText, code, function (d) {
+            return Number(d[2]) === 1;
+        });
+        const csvMale = parseCsv(csvText, code, function (d) {
+            return Number(d[2]) === 2;
+        });
+        wtf(csvFemale, "d3-line-tobacco line-female");
+        wtf(csvMale, "d3-line-tobacco line-male");
+
+        function wtf(csv, clazz) {
+            const xScale = d3.scaleTime()
+                .rangeRound([0, width])
+                .domain(d3.extent(csv, function (d) {
+                    return parseTime(d.year);
+                }));
+            const yScale = d3.scaleLinear()
+                .rangeRound([height, 0])
+                .domain([0, 100]);
+            const line = d3.line()
+                .x(function (d) {
+                    return xScale(parseTime(d.year));
+                }).y(function (d) {
+                    return yScale(d.mean);
+                });
+
+            const xAxis = d3.axisBottom()
+                .scale(xScale)
+                .ticks(5);
+            const yAxis = d3.axisLeft()
+                .scale(yScale)
+                .ticks(5);
+            const g = svg.append("g");
+            g.append("path")
+                .datum(csv)
+                .attr("class", clazz)
+                .attr("d", line);
+        }
+    }
+
+    function parseTime(input) {
+        return new Date(Date.parse(input));
     }
 
     function prepareOther() {
@@ -99,9 +152,10 @@ function showGraph(code, position) {
      *
      * @param csvText {String}
      * @param [code] {String}
-     * @return {Array}
+     * @param [predicate] {function(*): Boolean}
+     * @return {*[]}
      */
-    function parseCsv(csvText, code) {
+    function parseCsv(csvText, code, predicate) {
         var csv = Papa.parse(csvText);
         var csvData = csv.data;
         var rowHeaders = csvData[0];
@@ -111,6 +165,9 @@ function showGraph(code, position) {
                 continue;
             }
             if (code && csvData[i][1] !== code) {
+                continue;
+            }
+            if (!!predicate && !predicate(csvData[i])) {
                 continue;
             }
             var item = Object.create(null);
@@ -137,7 +194,10 @@ function main() {
     hideGraph();
     var svgElem = document.getElementById("world-svg");
     svgElem.contentWindow.addEventListener("click", function () {
-        showGraph("ae");
+        const countryCodeList = ["de", "cn", "us", "nz", "ae", "gb"];
+        const n = d3.randomUniform(countryCodeList.length)() | 0;
+        console.log(n);
+        showGraph(countryCodeList[n]);
     });
     $("#overlay-click").on("click", hideGraph);
     $("#tt-container").draggable();
@@ -189,3 +249,24 @@ const countryText = {
 };
 
 document.body.onload = main;
+
+window.addEventListener("keydown",
+    /**
+     * @param ev {KeyboardEvent}
+     */
+    function (ev) {
+        var code = ev.keyCode;
+        switch (code) {
+            case 37: // L
+            case 38: // U
+                location.assign("index.html");
+                break;
+            case 32:
+            case 39: // R
+            case 40:
+                location.assign("page2.html");
+                break;
+            default:
+                break;
+        }
+    });

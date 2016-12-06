@@ -4,12 +4,6 @@
     width: 100%;
 }
 
-#world-svg {
-    position: absolute;
-    height: 100%;
-    width: 100%;
-}
-
 #tt-d3-graph {
     text-align: center;
 }
@@ -20,15 +14,25 @@
 
 .d3-line-bmi {
     fill: none;
-    stroke: steelblue;
+    stroke: forestgreen;
     stroke-width: 2px;
 }
 
+.d3-line-tobacco {
+    fill: none;
+    stroke-width: 2px;
+}
+
+.line-male {
+    stroke: steelblue;
+}
+
+.line-female {
+    stroke: pink;
+}
+
 .overlay {
-    position: absolute;
     display: block;
-    height: 100%;
-    width: 100%;
     z-index: 1;
     left: 0;
     top: 0;

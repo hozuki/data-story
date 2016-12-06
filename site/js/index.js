@@ -6,7 +6,7 @@ $(".overlay-continue").on("click", function () {
 
 function asyncLoad(file) {
     return function (callback) {
-        d3.xhr(file, function (err, request) {
+        d3.request(file, function (err, request) {
             if (err) {
                 callback(err, null);
                 return;
@@ -20,7 +20,9 @@ function asyncLoad(file) {
 async.parallel([
     asyncLoad("data/tobacco-policy.json"),
     asyncLoad("data/t15.csv"),
-    asyncLoad("data/bmi30.csv")
+    asyncLoad("data/bmi30.csv"),
+    asyncLoad("data/europe-map.json"),
+    asyncLoad("data/country_code.csv")
 ], function (err, results) {
     if (err) {
         displayError("An error occurred.");
@@ -28,6 +30,8 @@ async.parallel([
         sessionStorage.setItem("tobacco-policy", results[0]);
         sessionStorage.setItem("t15", results[1]);
         sessionStorage.setItem("bmi30", results[2]);
+        sessionStorage.setItem("europe-map", results[3]);
+        sessionStorage.setItem("country-code", results[4]);
         enableContinue();
     }
 });
