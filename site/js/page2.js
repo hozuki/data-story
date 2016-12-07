@@ -72,9 +72,11 @@ function buildMap() {
         })
         .on("mouseenter", function (d) {
             const code = findKeyOfValue(G.codeMap, d.properties.name);
-            if (code) {
-                d3.selectAll("." + FILL_CLASS_PREFIX + code).style("fill", HOVER_FILL);
+            if (!code) {
+                return;
             }
+            d3.selectAll("." + FILL_CLASS_PREFIX + code).style("fill", HOVER_FILL);
+            showPopulationCircle(code);
         })
         .on("mousemove", function (d) {
             const code = findKeyOfValue(G.codeMap, d.properties.name);
@@ -98,9 +100,11 @@ function buildMap() {
         .on("mouseout", function (d) {
             tooltipContent.hide();
             const code = findKeyOfValue(G.codeMap, d.properties.name);
-            if (code) {
-                d3.selectAll("." + FILL_CLASS_PREFIX + code).style("fill", BASE_FILL);
+            if (!code) {
+                return;
             }
+            d3.selectAll("." + FILL_CLASS_PREFIX + code).style("fill", BASE_FILL);
+            hidePopulationCircle();
         })
         .on("click", onMapCountryClick)
         .attr("d", path);
@@ -199,9 +203,11 @@ function buildStaticBarGraph() {
         .attr("height", height / (data.length + 5))
         .on("mouseenter", function (d) {
             d3.selectAll("." + FILL_CLASS_PREFIX + d.code).style("fill", HOVER_FILL);
+            showPopulationCircle(d.code);
         })
         .on("mouseout", function (d) {
             d3.selectAll("." + FILL_CLASS_PREFIX + d.code).style("fill", BASE_FILL);
+            hidePopulationCircle();
         })
         .on("click", onBarCountryClick);
     g.append("text")
@@ -298,7 +304,34 @@ function main() {
 }
 
 function rebuildLineGraph(code) {
+}
 
+function showPopulationCircle(code) {
+    const exGraph = document.getElementById("d3-ex-graph-cont");
+    const width = exGraph.clientWidth, height = exGraph.clientHeight;
+    const populationCircle = document.getElementById("circle-total-population");
+    populationCircle.setAttribute("cx", String(width / 2));
+    populationCircle.setAttribute("cy", String(height / 2));
+    const ratioCircle = document.getElementById("circle-ratio");
+    ratioCircle.setAttribute("cx", String(width / 2));
+    ratioCircle.setAttribute("cy", String(height / 2));
+    const item = G.bmiData.find(function (d) {
+        return d.code === code;
+    });
+    if (item) {
+        const populationCircleRadius = 100;
+        const ratioCircleRadius = populationCircleRadius * Math.sqrt((+item.values[DATA_YEAR]) / 100);
+        ratioCircle.setAttribute("r", String(ratioCircleRadius));
+        const textNumber = document.getElementById("circle-text-number");
+        textNumber.textContent = item.values[DATA_YEAR] + "%";
+        const textName = document.getElementById("circle-text-name");
+        textName.textContent = item.name;
+    }
+    $("#ex-graph").show();
+}
+
+function hidePopulationCircle() {
+    $("#ex-graph").hide();
 }
 
 /**

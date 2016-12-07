@@ -210,7 +210,22 @@
         </tr>
         <tr>
             <td colspan="2">
-                <div id="d3-line-graph-cont" class="expand-all"></div>
+                <div id="d3-ex-graph-cont">
+                    <svg id="ex-graph">
+                        <defs>
+                            <filter x="0" y="0" width="1" height="1" id="solid">
+                                <feFlood flood-color="rgba(20,25,46,0.9)"/>
+                                <feComposite in="SourceGraphic"/>
+                            </filter>
+                        </defs>
+                        <g>
+                            <circle id="circle-total-population" r="100"></circle>
+                            <circle id="circle-ratio" r="20"></circle>
+                            <text id="circle-text-name" x="50%" y="30" text-anchor="middle" font-size="24" filter="url(#solid)"></text>
+                            <text id="circle-text-number" x="50%" y="50%" text-anchor="middle" font-size="24"></text>
+                        </g>
+                    </svg>
+                </div>
             </td>
         </tr>
     </table>

@@ -87,5 +87,37 @@ body {
 }
 
 #map-tooltip-content-number {
-    color: crimson;
+    color: #fffa90;
+}
+
+#d3-ex-graph-cont {
+    width: 100%;
+    height: 100%;
+}
+
+#ex-graph {
+    display: none;
+    width: 100%;
+    height: 100%;
+}
+
+#circle-total-population {
+    stroke: white;
+    stroke-width: 2px;
+    stroke-dasharray: 2;
+    fill: none;
+}
+
+#circle-ratio {
+    fill: #E94E1B;
+}
+
+#circle-text-number {
+    fill: white;
+}
+
+#circle-text-name {
+    fill: #FDA;
+    background-color: rgba(0, 0, 0, 0.9);
+    border-radius: 5px;
 }
