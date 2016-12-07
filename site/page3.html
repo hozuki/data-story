@@ -4,8 +4,28 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <link href="css/common.css" type="text/css" rel="stylesheet"/>
+    <link href="css/page3.css" type="text/css" rel="stylesheet"/>
 </head>
 <body>
-<video id="video" width="640" height="480" autoplay="autoplay"></video>
+<video id="video" width="640" height="480" autoplay="autoplay" class="expand-all"></video>
+<div class="overlay">
+    <div id="overlay-content">
+        <table style="display: inline-block;">
+            <tr>
+                <td>
+                    <span class="overlay-prompt">Will you choose a healthier way of living?</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <a href="javascript:" class="green">Yes</a>
+                    <span style="margin: 0 10px;"></span>
+                    <a href="javascript:" class="red">No</a>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
+<script src="js/page3.js"></script>
 </body>
 </html>
