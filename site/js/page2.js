@@ -367,6 +367,11 @@ window.addEventListener("keydown",
             case 38: // U
                 location.assign("page1.html");
                 break;
+            case 32:
+            case 39: // R
+            case 40:
+                location.assign("page3.html");
+                break;
             default:
                 break;
         }
