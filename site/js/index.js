@@ -22,7 +22,8 @@ async.parallel([
     asyncLoad("data/t15.csv"),
     asyncLoad("data/bmi30.csv"),
     asyncLoad("data/europe-map.json"),
-    asyncLoad("data/country_code.csv")
+    asyncLoad("data/country_code.csv"),
+    asyncLoad("data/bmi-cont.csv")
 ], function (err, results) {
     if (err) {
         displayError("An error occurred.");
@@ -32,6 +33,7 @@ async.parallel([
         sessionStorage.setItem("bmi30", results[2]);
         sessionStorage.setItem("europe-map", results[3]);
         sessionStorage.setItem("country-code", results[4]);
+        sessionStorage.setItem("bmi-cont", results[5]);
         enableContinue();
     }
 });

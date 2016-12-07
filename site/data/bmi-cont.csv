@@ -1,0 +1,193 @@
+country,code,bmi30,cont
+Afghanistan,af,2.4,Asia
+Albania,al,18.1,Europe
+Algeria,dz,23.6,Africa
+Andorra,ad,32.1,Europe
+Angola,ao,8.5,Africa
+Antigua and Barbuda,ag,31,North America
+Argentina,ar,26.5,South America
+Armenia,am,19.9,Europe
+Australia,au,29.9,Oceania
+Austria,at,20.1,Europe
+Azerbaijan,az,22.2,Europe
+Bahamas,bs,36.6,North America
+Bahrain,bh,34.1,Asia
+Bangladesh,bd,3.3,Asia
+Barbados,bb,33.2,North America
+Belarus,by,25.2,Europe
+Belgium,be,22.1,Europe
+Belize,bz,20.6,North America
+Benin,bj,8.1,Africa
+Bhutan,bt,5.9,Asia
+Bolivia (Plurinational State of),bo,15.8,South America
+Bosnia and Herzegovina,ba,19.2,Europe
+Botswana,bw,19.5,Africa
+Brazil,br,20.1,South America
+Brunei Darussalam,bn,18.6,Asia
+Bulgaria,bg,25.6,Europe
+Burkina Faso,bf,5.2,Africa
+Burundi,bi,2.1,Africa
+Cote d'Ivoire,ci,8,Africa
+Cabo Verde,cv,11.7,Africa
+Cambodia,kh,2.9,Asia
+Cameroon,cm,9.6,Africa
+Canada,ca,30.1,North America
+Central African Republic,cf,4.4,Africa
+Chad,td,6.6,Africa
+Chile,cl,28.5,South America
+China,cn,7.3,Asia
+Colombia,co,20.7,South America
+Comoros,km,5.8,Africa
+Congo,cg,9.7,Africa
+Cook Islands,ck,50,Oceania
+Costa Rica,cr,24,North America
+Croatia,hr,25.6,Europe
+Cuba,cu,27.2,North America
+Cyprus,cy,24.5,Europe
+Czech Republic,cz,29.1,Europe
+Democratic People's Republic of Korea,kp,2.5,Asia
+Democratic Republic of the Congo,kr,3.7,Africa
+Denmark,dk,21,Europe
+Djibouti,dj,8.5,Africa
+Dominica,dm,25.9,North America
+Dominican Republic,do,23,North America
+Ecuador,ec,18,South America
+Egypt,eg,27.7,Africa
+El Salvador,sv,20.1,North America
+Equatorial Guinea,gq,16.2,Africa
+Eritrea,er,3.4,Africa
+Estonia,ee,24.5,Europe
+Ethiopia,et,3.3,Africa
+Fiji,fj,35.9,Oceania
+Finland,fi,22.8,Europe
+France,fr,25.7,Europe
+Gabon,ga,15.8,Africa
+Gambia,gm,9.1,Africa
+Georgia,ge,22.1,Europe
+Germany,de,22.7,Europe
+Ghana,gh,10.9,Africa
+Greece,gr,25.1,Europe
+Grenada,gd,24.6,North America
+Guatemala,gt,16.4,North America
+Guinea,gn,5.9,Africa
+Guinea-Bissau,gw,6.3,Africa
+Guyana,gy,21.9,South America
+Haiti,ht,10.7,North America
+Honduras,hn,16.3,North America
+Hungary,hu,26,Europe
+Iceland,is,23.9,Europe
+India,in,4.7,Asia
+Indonesia,id,5.7,Asia
+Iran (Islamic Republic of),ir,24.9,Asia
+Iraq,iq,21.2,Asia
+Ireland,ie,27,Europe
+Israel,il,25.8,Asia
+Italy,it,23.7,Europe
+Jamaica,jm,26.8,North America
+Japan,jp,3.5,Asia
+Jordan,jo,28.1,Asia
+Kazakhstan,kz,23.5,Asia
+Kenya,ke,5.9,Africa
+Kiribati,ki,40.1,Oceania
+Kuwait,kw,38.3,Asia
+Kyrgyzstan,kg,13.3,Asia
+Lao People's Democratic Republic,la,3,Asia
+Latvia,lv,25.6,Europe
+Lebanon,lb,30.8,Asia
+Lesotho,ls,11.9,Africa
+Liberia,lr,5.8,Africa
+Libya,ly,31.9,Africa
+Lithuania,lt,27.5,Europe
+Luxembourg,lu,24.8,Europe
+Madagascar,mg,4.6,Africa
+Malawi,mw,4.3,Africa
+Malaysia,my,12.9,Asia
+Maldives,mv,7,Asia
+Mali,ml,5.7,Africa
+Malta,mt,28.7,Europe
+Marshall Islands,mh,42.3,Oceania
+Mauritania,mr,8.6,Africa
+Mauritius,mu,18.8,Africa
+Mexico,mx,27.6,North America
+Micronesia (Federated States of),fm,33.2,Oceania
+Mongolia,mn,15.7,Asia
+Montenegro,me,21.4,Europe
+Morocco,ma,21.7,Africa
+Mozambique,mz,4.5,Africa
+Myanmar,mm,2.9,Asia
+Namibia,na,16.8,Africa
+Nauru,nr,45.1,Oceania
+Nepal,np,2.9,Asia
+Netherlands,nl,21.9,Europe
+New Zealand,nz,30.6,Oceania
+Nicaragua,ni,15.5,North America
+Niger,ne,3.7,Africa
+Nigeria,ng,9.7,Africa
+Niue,nu,42.5,Oceania
+Norway,no,24.8,Europe
+Oman,om,26.5,Asia
+Pakistan,pk,4.8,Asia
+Palau,pw,47.1,Oceania
+Panama,pa,26.5,North America
+Papua New Guinea,pg,25.5,Oceania
+Paraguay,py,15.1,South America
+Peru,pe,20.4,South America
+Philippines,ph,4.7,Asia
+Poland,po,27,Europe
+Portugal,pt,22.1,Europe
+Qatar,qa,41,Asia
+Republic of Korea,kr,6.3,Asia
+Republic of Moldova,md,15.7,Europe
+Romania,ro,23.4,Europe
+Russian Federation,ru,26.2,Europe
+Rwanda,rw,3.3,Africa
+Saint Kitts and Nevis,kn,28.4,North America
+Saint Lucia,lc,27,North America
+Saint Vincent and the Grenadines,vc,24.1,North America
+Samoa,ws,41.6,Oceania
+Sao Tome and Principe,st,10.6,Africa
+Saudi Arabia,sa,33.7,Asia
+Senegal,sn,8.3,Africa
+Serbia,rs,21.1,Europe
+Seychelles,sc,26.9,Africa
+Sierra Leone,sl,6.6,Africa
+Singapore,sg,6.8,Asia
+Slovakia,sk,27.4,Europe
+Slovenia,si,27.4,Europe
+Solomon Islands,sb,25,Oceania
+Somalia,so,3.9,Africa
+South Africa,za,25.6,Africa
+South Sudan,ss,6.6,Africa
+Spain,es,26.5,Europe
+Sri Lanka,lk,6.8,Asia
+Sudan,sd,6.6,Africa
+Suriname,sr,26.1,South America
+Swaziland,sz,14.8,Africa
+Sweden,sw,22,Europe
+Switzerland,ch,21,Europe
+Syrian Arab Republic,sy,21.6,Asia
+Tajikistan,tj,12,Asia
+Thailand,th,9.2,Asia
+The former Yugoslav republic of Macedonia,mk,20.8,Europe
+Timor-Leste,tl,1.8,Asia
+Togo,tg,6.4,Africa
+Tonga,to,41.1,Oceania
+Trinidad and Tobago,tt,32.3,North America
+Tunisia,tn,27.1,Africa
+Turkey,tr,29.4,Europe
+Turkmenistan,tm,18.8,Asia
+Tuvalu,tv,39.6,Oceania
+Uganda,ug,3.9,Africa
+Ukraine,ua,21.7,Europe
+United Arab Emirates,ae,34.5,Asia
+United Kingdom of Great Britain and Northern Ireland,gb,29.8,Europe
+United Republic of Tanzania,tz,5.9,Africa
+United States of America,us,35,North America
+Uruguay,uy,27.6,South America
+Uzbekistan,uz,14.3,Asia
+Vanuatu,vu,32.9,Oceania
+Venezuela (Bolivarian Republic of),yv,24.3,South America
+Viet Nam,vd,3.5,Asia
+Yemen,ye,14.2,Asia
+Zambia,zm,7.2,Africa
+Zimbabwe,zw,8.4,Africa

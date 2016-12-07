@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Focusing on Obesity</title>
     <link href="css/common.css" type="text/css" rel="stylesheet"/>
     <link href="css/page2.css" type="text/css" rel="stylesheet"/>
     <script src="libs/d3-4.4.0/d3.js"></script>
@@ -12,14 +12,6 @@
     <script src="libs/PapaParse-4.1.0/papaparse.js"></script>
 </head>
 <body>
-<svg width="120" height="120" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <defs>
-        <pattern id="aa" width="10" height="10" patternUnits="userSpaceOnUse">
-            <circle fill="#FFF" r="2" cx="5" cy="5"></circle>
-        </pattern>
-    </defs>
-    <circle cy="60" r="50" cx="60" fill="url(#aa)"></circle>
-</svg>
 <div id="constraint-container" class="expand-all">
     <table id="flex-table" class="expand-all">
         <tr>
@@ -27,7 +19,193 @@
                 <div id="d3-bar-graph-cont" class="expand-all"></div>
             </td>
             <td>
-                <div id="d3-map-cont" class="expand-all"></div>
+                <div class="expand-all">
+                    <object id="europe-svg" data="data/europe.svg"></object>
+                    <svg id="d3-map" class="expand-all d3-map" xmlns="http://www.w3.org/2000/svg" version="1.1">
+                        <defs id="defs">
+                            <pattern id="pattern-fill-al" width="5.876256184028356" height="5.876256184028356"
+                                     patternUnits="userSpaceOnUse">
+                                <circle class="code-al pattern-code" r="0.4948899228397252" cx="1.5" cy="1.5"></circle>
+                            </pattern>
+                            <pattern id="pattern-fill-ad" width="4.412528185113798" height="4.412528185113798"
+                                     patternUnits="userSpaceOnUse">
+                                <circle class="code-ad pattern-code" r="1.211070037669963" cx="1.5" cy="1.5"></circle>
+                            </pattern>
+                            <pattern id="pattern-fill-am" width="5.604197995777754" height="5.604197995777754"
+                                     patternUnits="userSpaceOnUse">
+                                <circle class="code-am pattern-code" r="0.6133996646630585" cx="1.5" cy="1.5"></circle>
+                            </pattern>
+                            <pattern id="pattern-fill-at" width="5.576246709318381" height="5.576246709318381"
+                                     patternUnits="userSpaceOnUse">
+                                <circle class="code-at pattern-code" r="0.6258997688312878" cx="1.5" cy="1.5"></circle>
+                            </pattern>
+                            <pattern id="pattern-fill-az" width="5.305954499725111" height="5.305954499725111"
+                                     patternUnits="userSpaceOnUse">
+                                <circle class="code-az pattern-code" r="0.7501153610977923" cx="1.5" cy="1.5"></circle>
+                            </pattern>
+                            <pattern id="pattern-fill-by" width="4.980119205559974" height="4.980119205559974"
+                                     patternUnits="userSpaceOnUse">
+                                <circle class="code-by pattern-code" r="0.9085549931467218" cx="1.5" cy="1.5"></circle>
+                            </pattern>
+                            <pattern id="pattern-fill-be" width="5.317945372643964" height="5.317945372643964"
+                                     patternUnits="userSpaceOnUse">
+                                <circle class="code-be pattern-code" r="0.7444720106546343" cx="1.5" cy="1.5"></circle>
+                            </pattern>
+                            <pattern id="pattern-fill-ba" width="5.70544330734548" height="5.70544330734548"
+                                     patternUnits="userSpaceOnUse">
+                                <circle class="code-ba pattern-code" r="0.5686378487921695" cx="1.5" cy="1.5"></circle>
+                            </pattern>
+                            <pattern id="pattern-fill-bg" width="4.941058844013092" height="4.941058844013092"
+                                     patternUnits="userSpaceOnUse">
+                                <circle class="code-bg pattern-code" r="0.928240439356896" cx="1.5" cy="1.5"></circle>
+                            </pattern>
+                            <pattern id="pattern-fill-hr" width="4.941058844013092" height="4.941058844013092"
+                                     patternUnits="userSpaceOnUse">
+                                <circle class="code-hr pattern-code" r="0.928240439356896" cx="1.5" cy="1.5"></circle>
+                            </pattern>
+                            <pattern id="pattern-fill-cy" width="5.050762722761053" height="5.050762722761053"
+                                     patternUnits="userSpaceOnUse">
+                                <circle class="code-cy pattern-code" r="0.8733413969383519" cx="1.5" cy="1.5"></circle>
+                            </pattern>
+                            <pattern id="pattern-fill-cz" width="4.634399986000404" height="4.634399986000404"
+                                     patternUnits="userSpaceOnUse">
+                                <circle class="code-cz pattern-code" r="1.0884227177218087" cx="1.5" cy="1.5"></circle>
+                            </pattern>
+                            <pattern id="pattern-fill-dk" width="5.45544725589981" height="5.45544725589981"
+                                     patternUnits="userSpaceOnUse">
+                                <circle class="code-dk pattern-code" r="0.6806530471542788" cx="1.5" cy="1.5"></circle>
+                            </pattern>
+                            <pattern id="pattern-fill-ee" width="5.050762722761053" height="5.050762722761053"
+                                     patternUnits="userSpaceOnUse">
+                                <circle class="code-ee pattern-code" r="0.8733413969383519" cx="1.5" cy="1.5"></circle>
+                            </pattern>
+                            <pattern id="pattern-fill-fi" width="5.235673853646194" height="5.235673853646194"
+                                     patternUnits="userSpaceOnUse">
+                                <circle class="code-fi pattern-code" r="0.783450669950494" cx="1.5" cy="1.5"></circle>
+                            </pattern>
+                            <pattern id="pattern-fill-fr" width="4.931436519702948" height="4.931436519702948"
+                                     patternUnits="userSpaceOnUse">
+                                <circle class="code-fr pattern-code" r="0.9331137398764677" cx="1.5" cy="1.5"></circle>
+                            </pattern>
+                            <pattern id="pattern-fill-ge" width="5.317945372643964" height="5.317945372643964"
+                                     patternUnits="userSpaceOnUse">
+                                <circle class="code-ge pattern-code" r="0.7444720106546343" cx="1.5" cy="1.5"></circle>
+                            </pattern>
+                            <pattern id="pattern-fill-de" width="5.247193502013919" height="5.247193502013919"
+                                     patternUnits="userSpaceOnUse">
+                                <circle class="code-de pattern-code" r="0.7779561556091963" cx="1.5" cy="1.5"></circle>
+                            </pattern>
+                            <pattern id="pattern-fill-gr" width="4.990029900348745" height="4.990029900348745"
+                                     patternUnits="userSpaceOnUse">
+                                <circle class="code-gr pattern-code" r="0.9035848076721731" cx="1.5" cy="1.5"></circle>
+                            </pattern>
+                            <pattern id="pattern-fill-hu" width="4.902903378454601" height="4.902903378454601"
+                                     patternUnits="userSpaceOnUse">
+                                <circle class="code-hu pattern-code" r="0.9476206725268527" cx="1.5" cy="1.5"></circle>
+                            </pattern>
+                            <pattern id="pattern-fill-is" width="5.113768435807664" height="5.113768435807664"
+                                     patternUnits="userSpaceOnUse">
+                                <circle class="code-is pattern-code" r="0.8423480736718314" cx="1.5" cy="1.5"></circle>
+                            </pattern>
+                            <pattern id="pattern-fill-ie" width="4.811252243246881" height="4.811252243246881"
+                                     patternUnits="userSpaceOnUse">
+                                <circle class="code-ie pattern-code" r="0.9947960825054114" cx="1.5" cy="1.5"></circle>
+                            </pattern>
+                            <pattern id="pattern-fill-it" width="5.135300187611007" height="5.135300187611007"
+                                     patternUnits="userSpaceOnUse">
+                                <circle class="code-it pattern-code" r="0.831843810176357" cx="1.5" cy="1.5"></circle>
+                            </pattern>
+                            <pattern id="pattern-fill-lv" width="4.941058844013092" height="4.941058844013092"
+                                     patternUnits="userSpaceOnUse">
+                                <circle class="code-lv pattern-code" r="0.928240439356896" cx="1.5" cy="1.5"></circle>
+                            </pattern>
+                            <pattern id="pattern-fill-lt" width="4.767312946227961" height="4.767312946227961"
+                                     patternUnits="userSpaceOnUse">
+                                <circle class="code-lt pattern-code" r="1.0177325058406572" cx="1.5" cy="1.5"></circle>
+                            </pattern>
+                            <pattern id="pattern-fill-lu" width="5.020120805640619" height="5.020120805640619"
+                                     patternUnits="userSpaceOnUse">
+                                <circle class="code-lu pattern-code" r="0.8885545664636707" cx="1.5" cy="1.5"></circle>
+                            </pattern>
+                            <pattern id="pattern-fill-mt" width="4.666583705915984" height="4.666583705915984"
+                                     patternUnits="userSpaceOnUse">
+                                <circle class="code-mt pattern-code" r="1.0711214034569694" cx="1.5" cy="1.5"></circle>
+                            </pattern>
+                            <pattern id="pattern-fill-me" width="5.404221264588962" height="5.404221264588962"
+                                     patternUnits="userSpaceOnUse">
+                                <circle class="code-me pattern-code" r="0.7042386525347571" cx="1.5" cy="1.5"></circle>
+                            </pattern>
+                            <pattern id="pattern-fill-nl" width="5.342173039633603" height="5.342173039633603"
+                                     patternUnits="userSpaceOnUse">
+                                <circle class="code-nl pattern-code" r="0.7331082960280688" cx="1.5" cy="1.5"></circle>
+                            </pattern>
+                            <pattern id="pattern-fill-no" width="5.020120805640619" height="5.020120805640619"
+                                     patternUnits="userSpaceOnUse">
+                                <circle class="code-no pattern-code" r="0.8885545664636707" cx="1.5" cy="1.5"></circle>
+                            </pattern>
+                            <pattern id="pattern-fill-po" width="4.811252243246881" height="4.811252243246881"
+                                     patternUnits="userSpaceOnUse">
+                                <circle class="code-po pattern-code" r="0.9947960825054114" cx="1.5" cy="1.5"></circle>
+                            </pattern>
+                            <pattern id="pattern-fill-pt" width="5.317945372643964" height="5.317945372643964"
+                                     patternUnits="userSpaceOnUse">
+                                <circle class="code-pt pattern-code" r="0.7444720106546343" cx="1.5" cy="1.5"></circle>
+                            </pattern>
+                            <pattern id="pattern-fill-md" width="6.30943081406336" height="6.30943081406336"
+                                     patternUnits="userSpaceOnUse">
+                                <circle class="code-md pattern-code" r="0.3170758904428278" cx="1.5" cy="1.5"></circle>
+                            </pattern>
+                            <pattern id="pattern-fill-ro" width="5.168113941217019" height="5.168113941217019"
+                                     patternUnits="userSpaceOnUse">
+                                <circle class="code-ro pattern-code" r="0.8159200279545697" cx="1.5" cy="1.5"></circle>
+                            </pattern>
+                            <pattern id="pattern-fill-ru" width="4.884154157278521" height="4.884154157278521"
+                                     patternUnits="userSpaceOnUse">
+                                <circle class="code-ru pattern-code" r="0.9571992634588139" cx="1.5" cy="1.5"></circle>
+                            </pattern>
+                            <pattern id="pattern-fill-rs" width="5.4425043023013515" height="5.4425043023013515"
+                                     patternUnits="userSpaceOnUse">
+                                <circle class="code-rs pattern-code" r="0.6865913006025259" cx="1.5" cy="1.5"></circle>
+                            </pattern>
+                            <pattern id="pattern-fill-sk" width="4.776004499380438" height="4.776004499380438"
+                                     patternUnits="userSpaceOnUse">
+                                <circle class="code-sk pattern-code" r="1.0131787667425307" cx="1.5" cy="1.5"></circle>
+                            </pattern>
+                            <pattern id="pattern-fill-si" width="4.776004499380438" height="4.776004499380438"
+                                     patternUnits="userSpaceOnUse">
+                                <circle class="code-si pattern-code" r="1.0131787667425307" cx="1.5" cy="1.5"></circle>
+                            </pattern>
+                            <pattern id="pattern-fill-es" width="4.856429311786321" height="4.856429311786321"
+                                     patternUnits="userSpaceOnUse">
+                                <circle class="code-es pattern-code" r="0.9714309162402207" cx="1.5" cy="1.5"></circle>
+                            </pattern>
+                            <pattern id="pattern-fill-sw" width="5.330017908890261" height="5.330017908890261"
+                                     patternUnits="userSpaceOnUse">
+                                <circle class="code-sw pattern-code" r="0.7388030666978951" cx="1.5" cy="1.5"></circle>
+                            </pattern>
+                            <pattern id="pattern-fill-ch" width="5.45544725589981" height="5.45544725589981"
+                                     patternUnits="userSpaceOnUse">
+                                <circle class="code-ch pattern-code" r="0.6806530471542788" cx="1.5" cy="1.5"></circle>
+                            </pattern>
+                            <pattern id="pattern-fill-mk" width="5.481612620668932" height="5.481612620668932"
+                                     patternUnits="userSpaceOnUse">
+                                <circle class="code-mk pattern-code" r="0.6686912333840905" cx="1.5" cy="1.5"></circle>
+                            </pattern>
+                            <pattern id="pattern-fill-tr" width="4.610694459770734" height="4.610694459770734"
+                                     patternUnits="userSpaceOnUse">
+                                <circle class="code-tr pattern-code" r="1.101243342930795" cx="1.5" cy="1.5"></circle>
+                            </pattern>
+                            <pattern id="pattern-fill-ua" width="5.366734884263648" height="5.366734884263648"
+                                     patternUnits="userSpaceOnUse">
+                                <circle class="code-ua pattern-code" r="0.7216403256830173" cx="1.5" cy="1.5"></circle>
+                            </pattern>
+                            <pattern id="pattern-fill-gb" width="4.579645659045698" height="4.579645659045698"
+                                     patternUnits="userSpaceOnUse">
+                                <circle class="code-gb pattern-code" r="1.1181354918891984" cx="1.5" cy="1.5"></circle>
+                            </pattern>
+                        </defs>
+                    </svg>
+                </div>
             </td>
         </tr>
         <tr>
@@ -37,6 +215,9 @@
         </tr>
     </table>
 </div>
+<span id="map-tooltip-content">
+    <span id="map-tooltip-content-name"></span><br/>(<span id="map-tooltip-content-number"></span>)
+</span>
 <script src="js/page2.js"></script>
 </body>
 </html>

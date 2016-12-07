@@ -1,5 +1,6 @@
 body {
     background-color: #14192E;
+    overflow: hidden;
 }
 
 #constraint-container {
@@ -28,19 +29,15 @@ body {
 
 }
 
-#pattern-cont {
-    display: none;
-}
-
 .d3-map {
     top: -32%;
     left: -5%;
-    position: relative;
+    position: absolute;
 }
 
 .boundary {
-    stroke: white;
-    stroke-width: 2px;
+    /*stroke: white;*/
+    /*stroke-width: 2px;*/
     fill: none;
 }
 
@@ -54,4 +51,41 @@ body {
 
 .bar-text {
     color: yellow;
+}
+
+#europe-svg {
+    position: absolute;
+    top: -39%;
+    left: -6%;
+    width: 680px;
+    height: 480px;
+}
+
+.pattern-code {
+    fill: #FFF;
+}
+
+#map-tooltip-content {
+    display: none;
+    position: absolute;
+    color: white;
+    border: steelblue 1px dotted;
+    border-radius: 3px;
+    padding: 8px;
+    background-color: rgba(0, 0, 0, 0.95);
+    z-index: 2;
+}
+
+#map-tooltip-content > * {
+    position: initial;
+    border: initial;
+    background-color: initial;
+}
+
+#map-tooltip-content-name {
+    color: white;
+}
+
+#map-tooltip-content-number {
+    color: crimson;
 }
