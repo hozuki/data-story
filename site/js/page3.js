@@ -28,6 +28,10 @@ function main() {
             video.play();
         }, errBack);
     }
+
+    $(".click-responder").on("click", function() {
+        window.alert("Ask a real human please :)")
+    });
 }
 
 document.body.onload = main;
