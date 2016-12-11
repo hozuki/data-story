@@ -118,7 +118,7 @@ class Page2LineChart {
     }
 
     static get yearEnd() {
-        return 2011;
+        return 2015;
     }
 
 }

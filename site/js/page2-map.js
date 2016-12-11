@@ -68,13 +68,15 @@ class Page2Map {
             .attr("fill", d => {
                 const code = codeMap[d.properties.name];
                 if (!code) {
-                    return "#DD0";
+                    //return "#DD0";
+                    return "rgba(255,127,255,0.4)";
                 } else {
                     const entry = obesityData.find(data => data.country === d.properties.name);
                     if (entry && entry.value) {
                         return `url(#${Page2Map.patternIDPrefix}${code})`;
                     } else {
-                        return "rgba(255,127,255,0.4)";
+                        //return "rgba(255,127,255,0.4)";
+                        return "rgba(0, 0, 0, 0.3)";
                         //return "hsla(228,75%,15%,0.4)";
                     }
                 }
@@ -316,7 +318,7 @@ class Page2Map {
      * @return {string}
      */
     static get baseFill() {
-        return "#DDD";
+        return "#EE0";
     }
 
 }
