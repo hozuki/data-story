@@ -65,7 +65,7 @@ class Page2BPChart {
         this.jqSvg.html("");
         const svg = this.svg;
         svg.append("text").attr("x", 210).attr("y", 50)
-            .attr("class", "header").text(`Food! [${year}]`);
+            .attr("class", "header").text(`Nutritional Structure [${year}]`);
 
         const group = this.bpGroup = svg.append("g").attr("transform", "translate(100,100)");
         const bpChart = this.bpChart = viz.bP()
