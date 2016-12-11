@@ -32,7 +32,7 @@ class Page2Map {
         }
         this.jqSvg.html("");
         this.__clearEventHandlers();
-        this.__rebuildPatterns(year);
+        this.__rebuildNormalizedPatterns(year);
 
         const svg = this.svg;
         const div = document.querySelector("#div-map");
@@ -228,9 +228,14 @@ class Page2Map {
                 w = 4 * rangeLength / (entry.value - extent[0]);
                 h = w;
             }
-            const cx = w / 2, cy = h / 2;
-            let pathData;
-            pathData = entry.value > extent[0] ? `M${cx},0 L0,${cy} M${w},0 L0,${h} M${w},${cy} L${cx},${h}` : "";
+
+            // dots
+            const cx = w / 2.5, cy = h / 2.5;
+            const r = 1;
+            const pathData = `M${cx - r},${cy} A${r},${r},0 1 1 ${cx + r},${cy} A${r},${r},0 1 1 ${cx - r},${cy} Z`;
+            // hatches
+            //const cx = w / 2, cy = h / 2;
+            //const pathData = entry.value > extent[0] ? `M${cx},0 L0,${cy} M${w},0 L0,${h} M${w},${cy} L${cx},${h}` : "";
             defs.append("pattern")
                 .attr("id", Page2Map.patternIDPrefix + code)
                 .attr("patternUnits", "userSpaceOnUse")
