@@ -1,5 +1,5 @@
 * {
-    font-family: Roboto, Helvetica, Helvetica, "Helvetica Neue", "Lucida Sans", "Microsoft Yahei", "Microsoft YaHei UI", SimHei, sans-serif;
+    font-family: Roboto, Helvetica, Helvetica, Arial, "Helvetica Neue", "Lucida Sans", "Microsoft Yahei", "Microsoft YaHei UI", SimHei, sans-serif;
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
@@ -16,7 +16,10 @@ body {
 }
 
 .expand-all {
-    position: absolute;
     width: 100%;
     height: 100%;
+}
+
+.absolute {
+    position: absolute;
 }

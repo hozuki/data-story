@@ -1,0 +1,32 @@
+#svg-line-chart {
+    display: none;
+}
+
+#div-line-chart {
+    width: 420px;
+    height: 150px;
+    margin-left: 90px;
+    margin-top: -75px;
+    margin-right: 40px;
+    padding: 10px;
+    left: 0;
+    top: 0;
+}
+
+.d3-line-obesity {
+    stroke: lightgreen;
+    stroke-width: 2px;
+    fill: none;
+}
+
+#svg-line-chart text {
+    fill: white;
+}
+
+#svg-line-chart .domain {
+    stroke: white;
+}
+
+#svg-line-chart .tick line {
+    stroke: white;
+}

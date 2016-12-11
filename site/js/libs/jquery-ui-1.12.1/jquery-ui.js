@@ -8151,7 +8151,7 @@ $.extend( Datepicker.prototype, {
 		if ( this._get( inst, "gotoCurrent" ) && inst.currentDay ) {
 			inst.selectedDay = inst.currentDay;
 			inst.drawMonth = inst.selectedMonth = inst.currentMonth;
-			inst.drawYear = inst.selectedYear = inst.currentYear;
+			inst.drawYear = inst.selectedYear = inst._currentYear;
 		} else {
 			date = new Date();
 			inst.selectedDay = date.getDate();
@@ -8187,9 +8187,9 @@ $.extend( Datepicker.prototype, {
 		inst = this._getInst( target[ 0 ] );
 		inst.selectedDay = inst.currentDay = $( "a", td ).html();
 		inst.selectedMonth = inst.currentMonth = month;
-		inst.selectedYear = inst.currentYear = year;
+		inst.selectedYear = inst._currentYear = year;
 		this._selectDate( id, this._formatDate( inst,
-			inst.currentDay, inst.currentMonth, inst.currentYear ) );
+			inst.currentDay, inst.currentMonth, inst._currentYear ) );
 	},
 
 	/* Erase the input field and hide the date picker. */
@@ -8656,7 +8656,7 @@ $.extend( Datepicker.prototype, {
 		inst.drawYear = inst.selectedYear = date.getFullYear();
 		inst.currentDay = ( dates ? date.getDate() : 0 );
 		inst.currentMonth = ( dates ? date.getMonth() : 0 );
-		inst.currentYear = ( dates ? date.getFullYear() : 0 );
+		inst._currentYear = ( dates ? date.getFullYear() : 0 );
 		this._adjustInstDate( inst );
 	},
 
@@ -8747,7 +8747,7 @@ $.extend( Datepicker.prototype, {
 
 		inst.selectedDay = inst.currentDay = newDate.getDate();
 		inst.drawMonth = inst.selectedMonth = inst.currentMonth = newDate.getMonth();
-		inst.drawYear = inst.selectedYear = inst.currentYear = newDate.getFullYear();
+		inst.drawYear = inst.selectedYear = inst._currentYear = newDate.getFullYear();
 		if ( ( origMonth !== inst.selectedMonth || origYear !== inst.selectedYear ) && !noChange ) {
 			this._notifyChange( inst );
 		}
@@ -8759,9 +8759,9 @@ $.extend( Datepicker.prototype, {
 
 	/* Retrieve the date(s) directly. */
 	_getDate: function( inst ) {
-		var startDate = ( !inst.currentYear || ( inst.input && inst.input.val() === "" ) ? null :
+		var startDate = ( !inst._currentYear || ( inst.input && inst.input.val() === "" ) ? null :
 			this._daylightSavingAdjust( new Date(
-			inst.currentYear, inst.currentMonth, inst.currentDay ) ) );
+			inst._currentYear, inst.currentMonth, inst.currentDay ) ) );
 			return startDate;
 	},
 
@@ -8822,7 +8822,7 @@ $.extend( Datepicker.prototype, {
 			stepMonths = this._get( inst, "stepMonths" ),
 			isMultiMonth = ( numMonths[ 0 ] !== 1 || numMonths[ 1 ] !== 1 ),
 			currentDate = this._daylightSavingAdjust( ( !inst.currentDay ? new Date( 9999, 9, 9 ) :
-				new Date( inst.currentYear, inst.currentMonth, inst.currentDay ) ) ),
+				new Date( inst._currentYear, inst.currentMonth, inst.currentDay ) ) ),
 			minDate = this._getMinMaxDate( inst, "min" ),
 			maxDate = this._getMinMaxDate( inst, "max" ),
 			drawMonth = inst.drawMonth - showCurrentAtPos,
@@ -9167,11 +9167,11 @@ $.extend( Datepicker.prototype, {
 		if ( !day ) {
 			inst.currentDay = inst.selectedDay;
 			inst.currentMonth = inst.selectedMonth;
-			inst.currentYear = inst.selectedYear;
+			inst._currentYear = inst.selectedYear;
 		}
 		var date = ( day ? ( typeof day === "object" ? day :
 			this._daylightSavingAdjust( new Date( year, month, day ) ) ) :
-			this._daylightSavingAdjust( new Date( inst.currentYear, inst.currentMonth, inst.currentDay ) ) );
+			this._daylightSavingAdjust( new Date( inst._currentYear, inst.currentMonth, inst.currentDay ) ) );
 		return this.formatDate( this._get( inst, "dateFormat" ), date, this._getFormatConfig( inst ) );
 	}
 } );

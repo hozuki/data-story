@@ -1,0 +1,41 @@
+#div-bp-chart {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+#svg-bp-chart text {
+    font-size: 12px;
+}
+
+#svg-bp-chart .mainBars rect {
+    shape-rendering: auto;
+    fill-opacity: 0;
+    stroke-width: 0.5px;
+    stroke: rgb(0, 0, 0);
+    stroke-opacity: 0;
+}
+
+#svg-bp-chart line {
+    stroke: grey;
+}
+
+#svg-bp-chart text {
+    fill: white;
+}
+
+#svg-bp-chart .header {
+    text-anchor: middle;
+    font-size: 24px;
+}
+
+#svg-bp-chart .edges {
+    stroke: none;
+    fill-opacity: 0.5;
+}
+
+#svg-bp-chart .subBars {
+    shape-rendering: crispEdges;
+}

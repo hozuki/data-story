@@ -1700,7 +1700,7 @@
 	<line class="st7" x1="599.2" y1="422" x2="597" y2="414.7"/>
 	<line class="st7" x1="574.6" y1="418.4" x2="599.2" y2="422"/>
 	<line class="st7" x1="601.7" y1="440.2" x2="578.1" y2="429.8"/>
-	
+
 		<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="601.7" y1="37.08" x2="601.7" y2="37.08" gradientTransform="matrix(1 0 0 -1 0 477.28)">
 		<stop  offset="0" style="stop-color:#FFFFFF"/>
 		<stop  offset="1" style="stop-color:#000000"/>

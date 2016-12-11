@@ -25,46 +25,6 @@ body {
     width: 65%;
 }
 
-#flex-table tr:nth-child(2) {
-
-}
-
-.d3-map {
-    top: -32%;
-    left: -5%;
-    position: absolute;
-}
-
-.boundary {
-    /*stroke: white;*/
-    /*stroke-width: 2px;*/
-    fill: none;
-}
-
-.d3-bar {
-    width: 100%;
-    height: 100%;
-    top: -25%;
-    left: 0;
-    position: absolute;
-}
-
-.bar-text {
-    color: yellow;
-}
-
-#europe-svg {
-    position: absolute;
-    top: -39%;
-    left: -6%;
-    width: 680px;
-    height: 480px;
-}
-
-.pattern-code {
-    fill: #FFF;
-}
-
 #map-tooltip-content {
     display: none;
     position: absolute;
@@ -86,38 +46,10 @@ body {
     color: white;
 }
 
-#map-tooltip-content-number {
-    color: #fffa90;
+#map-tooltip-content-number .highlight {
+    color: #FFFA90;
 }
 
-#d3-ex-graph-cont {
-    width: 100%;
-    height: 100%;
-}
-
-#ex-graph {
-    display: none;
-    width: 100%;
-    height: 100%;
-}
-
-#circle-total-population {
-    stroke: white;
-    stroke-width: 2px;
-    stroke-dasharray: 2;
-    fill: none;
-}
-
-#circle-ratio {
-    fill: #E94E1B;
-}
-
-#circle-text-number {
-    fill: white;
-}
-
-#circle-text-name {
-    fill: #FDA;
-    background-color: rgba(0, 0, 0, 0.9);
-    border-radius: 5px;
+#map-tooltip-content-number .missing {
+    color: #FFDA19;
 }
