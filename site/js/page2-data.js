@@ -24,17 +24,17 @@ class Page2Data {
          * @memberOf {Page2Data}
          * @type {Array<{variable: string, measure: string, country: string, value: number}>}
          */
-        let myAllData = this.intakeData = [];
+        const myAllData = this.intakeData = [];
         /**
          * @memberOf {Page2Data}
-         * @type {{[number]: Array<number>}}
+         * @type {{[year]: Array<number>}}
          */
-        let myBPData = this.intakeBPData = Object.create(null);
-        let csv = sessionStorage.getItem(SessionKeys.foodIntakeTable);
+        const myBPData = this.intakeBPData = Object.create(null);
+        const csv = sessionStorage.getItem(SessionKeys.foodIntakeTable);
         /**
          * @type {Array}
          */
-        let csvData = Papa.parse(csv).data;
+        const csvData = Papa.parse(csv).data;
         const yearStart = 1961, yearEnd = 2011;
         const columnCount = yearEnd - yearStart + 1;
         const rowStart = 2, columnStart = 3;
@@ -54,9 +54,9 @@ class Page2Data {
          */
         let variable, measure;
         for (let rowIndex = rowStart; rowIndex < csvData.length - 1; ++rowIndex) {
-            let csvItem = csvData[rowIndex];
-            let country = (csvItem[2] || "").trim();
-            let newVariable = csvItem[0];
+            const csvItem = csvData[rowIndex];
+            const country = (csvItem[2] || "").trim();
+            const newVariable = csvItem[0];
             if (newVariable) {
                 variable = (csvItem[0] || "").trim();
                 measure = (csvItem[1] || "").trim();
@@ -98,20 +98,20 @@ class Page2Data {
 
         /**
          * @memberOf {Page2Data}
-         * @type {{[key]: Array<{country: string, year: number, value: number}>}}
+         * @type {{[year]: Array<{country: string, year: number, value: number}>}}
          */
-        let list = this.obesityData = Object.create(null);
+        const list = this.obesityData = Object.create(null);
         for (let i = yearStart; i <= yearEnd; ++i) {
             list[i] = [];
         }
         for (let i = rowStart; i < obesityObject.length - 1; ++i) {
-            let o = obesityObject[i];
-            let country = o[0];
+            const o = obesityObject[i];
+            const country = o[0];
             for (let j = columnStart; j < columnStart + yearCount; ++j) {
                 /**
                  * @type {{country: string, year: number, value: number}}
                  */
-                let item = Object.create(null);
+                const item = Object.create(null);
                 item.year = j - columnStart + yearStart;
                 item.country = country;
                 /**
@@ -158,11 +158,11 @@ class Page2Data {
         /**
          * {Country: Code}
          * @memberOf {Page2Data}
-         * @type {{[key]: string}}
+         * @type {{[countryName]: string}}
          */
         const map = this.countryCodeMap = Object.create(null);
         for (let i = 1; i < countryCodeObject.length - 1; ++i) {
-            let o = countryCodeObject[i];
+            const o = countryCodeObject[i];
             map[o[0]] = o[1];
         }
     }

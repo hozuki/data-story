@@ -1,0 +1,34 @@
+{
+  "de": {
+    "env": 0,
+    "warning": 1,
+    "media": 1,
+    "ads": 1,
+    "tax": 2,
+    "year": 2007
+  },
+  "us": {
+    "env": 0,
+    "warning": 2,
+    "media": 1,
+    "ads": 0,
+    "tax": 1,
+    "year": 1990
+  },
+  "nz": {
+    "env": 3,
+    "warning": 3,
+    "media": 1,
+    "ads": 1,
+    "tax": 3,
+    "year": 1990
+  },
+  "au": {
+    "env": 3,
+    "warning": 3,
+    "media": 1,
+    "ads": 1,
+    "tax": 3,
+    "year": 2005
+  }
+}

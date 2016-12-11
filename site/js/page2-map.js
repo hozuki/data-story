@@ -4,11 +4,9 @@ class Page2Map {
 
     /**
      * @constructor
-     * @param window {Window}
      * @param data {Page2Data}
      */
-    constructor(window, data) {
-        this.window = window;
+    constructor(data) {
         this.data = data;
         /**
          * @type {*}
@@ -34,7 +32,7 @@ class Page2Map {
         }
         this.jqSvg.html("");
         this.__clearEventHandlers();
-        this.__rebuildNormalizedPatterns(year);
+        this.__rebuildPatterns(year);
 
         const svg = this.svg;
         const div = document.querySelector("#div-map");
@@ -91,7 +89,9 @@ class Page2Map {
                     G.bpChart.$onMouseEnter(intakeData);
                 }
                 const strokeSelector = `.${Page2Map.fillClassPrefix}${code}`;
-                d3.selectAll(strokeSelector).style("stroke", Page2Map.hoverFill);
+                d3.selectAll(strokeSelector)
+                    .style("stroke", Page2Map.hoverFill)
+                    .style("fill", Page2Map.hoverFill);
 
                 {
                     const item = obesityData.find(v => v.country === d.properties.name);
@@ -130,7 +130,9 @@ class Page2Map {
                     G.bpChart.$onMouseOut(intakeData);
                 }
                 const strokeSelector = `.${Page2Map.fillClassPrefix}${code}`;
-                let a = d3.selectAll(strokeSelector).style("stroke", Page2Map.baseFill);
+                let a = d3.selectAll(strokeSelector)
+                    .style("stroke", Page2Map.baseFill)
+                    .style("fill", Page2Map.baseFill);
                 G.lineChart.hide();
             })
             .attr("d", path);
@@ -160,10 +162,11 @@ class Page2Map {
                 continue;
             }
             const w = 25 / Math.sqrt(entry.value), h = w;
-            const cx = w / 2, cy = h / 2;
+            const cx = w / 2.5, cy = h / 2.5;
             // const r = (-2.5 + Math.log(entry.value)) * 1.25;
-            // const pathData = `M${cx - r},${cy} A${r},${r},0 1 1 ${cx + r},${cy} A${r},${r},0 1 1 ${cx - r},${cy} Z`;
-            const pathData = `M${cx},0 L0,${cy} M${w},0 L0,${h} M${w},${cy} L${cx},${h}`;
+            const r = 1;
+            const pathData = `M${cx - r},${cy} A${r},${r},0 1 1 ${cx + r},${cy} A${r},${r},0 1 1 ${cx - r},${cy} Z`;
+            //const pathData = `M${cx},0 L0,${cy} M${w},0 L0,${h} M${w},${cy} L${cx},${h}`;
             defs.append("pattern")
                 .attr("id", Page2Map.patternIDPrefix + code)
                 .attr("patternUnits", "userSpaceOnUse")
@@ -173,6 +176,7 @@ class Page2Map {
                 .attr("class", `pattern ${Page2Map.fillClassPrefix}${code}`)
                 .attr("d", pathData)
                 .attr("stroke", Page2Map.baseFill)
+                .attr("fill", Page2Map.baseFill)
                 .attr("stroke-width", 1);
         }
     }

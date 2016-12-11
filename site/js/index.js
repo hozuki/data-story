@@ -1,6 +1,4 @@
-$(".overlay-continue").on("click", () => {
-    navigateTo("page2.html");
-});
+$(".overlay-continue").on("click", () => navigateTo("page2.html"));
 
 function asyncLoad(file) {
     file = "data/" + file;
@@ -20,7 +18,10 @@ async.parallel([
     asyncLoad("europe-geo-map.json"),
     asyncLoad("csv-food-intake.csv"),
     asyncLoad("csv-europe-obesity.csv"),
-    asyncLoad("csv-country_code.csv")
+    asyncLoad("csv-country_code.csv"),
+    asyncLoad("world-geo-map.json"),
+    asyncLoad("json-tobacco-policy.json"),
+    asyncLoad("csv-smoker.csv")
 ], (err, results) => {
     if (err) {
         displayError("An error occurred.");
@@ -30,6 +31,9 @@ async.parallel([
     sessionStorage.setItem(SessionKeys.foodIntakeTable, results[1]);
     sessionStorage.setItem(SessionKeys.europeObesity, results[2]);
     sessionStorage.setItem(SessionKeys.countryCode, results[3]);
+    sessionStorage.setItem(SessionKeys.worldGeoMap, results[4]);
+    sessionStorage.setItem(SessionKeys.tobaccoPolicy, results[5]);
+    sessionStorage.setItem(SessionKeys.smoker, results[6]);
     enableContinue();
 });
 

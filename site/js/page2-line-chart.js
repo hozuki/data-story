@@ -7,11 +7,9 @@ class Page2LineChart {
 
     /**
      * @constructor
-     * @param window {Window}
      * @param data {Page2Data}
      */
-    constructor(window, data) {
-        this.window = window;
+    constructor(data) {
         this.data = data;
         /**
          * @type {*}

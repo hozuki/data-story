@@ -8,5 +8,8 @@ const SessionKeys = {
     europeGeoMap: "europeGeoMap",
     foodIntakeTable: "foodIntakeTable",
     europeObesity: "europeObesity",
-    countryCode: "countryCode"
+    countryCode: "countryCode",
+    worldGeoMap: "worldGeoMap",
+    tobaccoPolicy: "tobaccoPolicy",
+    smoker: "smoker"
 };

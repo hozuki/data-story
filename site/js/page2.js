@@ -19,10 +19,10 @@ const G = {
 
 function main() {
     G.currentYear = G.yearEnd;
-    let data = new Page2Data();
-    G.bpChart = new Page2BPChart(window, data);
-    G.map = new Page2Map(window, data);
-    G.lineChart = new Page2LineChart(window, data);
+    const data = new Page2Data();
+    G.bpChart = new Page2BPChart(data);
+    G.map = new Page2Map(data);
+    G.lineChart = new Page2LineChart(data);
     G.bpChart.rebuild(G.currentYear);
     G.map.rebuild(G.currentYear);
 }

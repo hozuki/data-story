@@ -7,15 +7,9 @@ class Page2BPChart {
 
     /**
      * @constructor
-     * @param window {Window}
      * @param data {Page2Data}
      */
-    constructor(window, data) {
-        /**
-         * @type {Window}
-         * @memberOf {Page2BPChart}
-         */
-        this.window = window;
+    constructor(data) {
         /**
          * @type {Page2Data}
          * @memberOf {Page2BPChart}
