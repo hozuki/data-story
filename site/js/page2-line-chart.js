@@ -20,7 +20,7 @@ class Page2LineChart {
             .attr("id", "svg-line-chart")
             .attr("class", "expand-all absolute");
         /**
-         * @memberOf {Page2Map}
+         * @memberOf {Page2LineChart}
          * @type {jQuery}
          * @private
          */

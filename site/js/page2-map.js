@@ -323,7 +323,7 @@ class Page2Map {
      * @return {string}
      */
     static get baseFill() {
-        return "#EE0";
+        return "#FFF";
     }
 
 }
