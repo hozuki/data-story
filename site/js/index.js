@@ -1,4 +1,5 @@
-$(".overlay-continue").on("click", () => navigateTo("page1.html"));
+$(".overlay-continue").on("click", () => window.location.assign("page1.html"));
+registerNavigation(null, "page1.html");
 
 function asyncLoad(file) {
     file = "data/" + file;

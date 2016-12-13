@@ -1,5 +1,7 @@
 "use strict";
 
+registerNavigation("index.html", "page2.html");
+
 const G = {
     /**
      * @type {Page1Map}

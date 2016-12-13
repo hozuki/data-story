@@ -1,5 +1,7 @@
 "use strict";
 
+registerNavigation("page1.html", "page3.html");
+
 const G = {
     /**
      * @type {Page2BPChart}
