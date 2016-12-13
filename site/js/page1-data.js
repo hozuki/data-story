@@ -6,8 +6,8 @@ class Page1Data {
         this.__computeWorldMapData();
         this.__computeTobaccoPolicyData();
         this.__computeSmokerData();
-        this.__computeSmokerData();
         this.__computeObesityData();
+        this.__computeWorldObesityData();
         this.__computeCountryCodeData();
     }
 
@@ -75,7 +75,7 @@ class Page1Data {
                  */
                 const o = Object.create(null);
                 o.country = country;
-                o.year = i - columnStart + yearStart;
+                o.year = j - columnStart + yearStart;
                 o.value = val;
                 list[o.year].push(o);
             }
@@ -96,7 +96,7 @@ class Page1Data {
          * @memberOf {Page1Data}
          * @type {{[year]: Array<{country: string, year: number, value: number}>}}
          */
-        const list = this.obesityData = Object.create(null);
+        const list = this.europeObesity = Object.create(null);
         for (let i = yearStart; i <= yearEnd; ++i) {
             list[i] = [];
         }
@@ -141,6 +141,49 @@ class Page1Data {
         for (let i = 1; i < countryCodeObject.length - 1; ++i) {
             const o = countryCodeObject[i];
             map[o[0]] = o[1];
+        }
+    }
+
+    /**
+     * @memberOf {Page1Data}
+     * @private
+     */
+    __computeWorldObesityData() {
+        const obesityText = sessionStorage.getItem(SessionKeys.ourObesity);
+        const obesityObject = Papa.parse(obesityText).data;
+        const yearStart = 1995, yearEnd = 2014, yearCount = yearEnd - yearStart + 1;
+        const rowStart = 1, columnStart = 1;
+
+        /**
+         * @memberOf {Page1Data}
+         * @type {{[year]: Array<{country: string, year: number, value: number}>}}
+         */
+        const list = this.worldObesity = Object.create(null);
+        for (let i = yearStart; i <= yearEnd; ++i) {
+            list[i] = [];
+        }
+        for (let i = rowStart; i < obesityObject.length - 1; ++i) {
+            const o = obesityObject[i];
+            const country = o[0];
+            for (let j = columnStart; j < columnStart + yearCount; ++j) {
+                /**
+                 * @type {{country: string, year: number, value: number}}
+                 */
+                let item = Object.create(null);
+                item.year = j - columnStart + yearStart;
+                item.country = country;
+                /**
+                 * @type {number|null}
+                 */
+                let value;
+                if (!o[j]) {
+                    value = null;
+                } else {
+                    value = Number(o[j]);
+                }
+                item.value = value;
+                list[item.year].push(item);
+            }
         }
     }
 

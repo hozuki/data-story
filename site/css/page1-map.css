@@ -1,3 +1,15 @@
 #div-preset-svg object {
     position: absolute;
+    width: 960px;
+    height: 671px;
+}
+
+#div-map {
+    position: absolute;
+    width: 960px;
+    height: 671px;
+}
+
+.country {
+    fill: rgba(0, 0, 0, 0.2);
 }

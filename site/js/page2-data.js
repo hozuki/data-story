@@ -100,7 +100,7 @@ class Page2Data {
          * @memberOf {Page2Data}
          * @type {{[year]: Array<{country: string, year: number, value: number}>}}
          */
-        const list = this.obesityData = Object.create(null);
+        const list = this.europeObesity = Object.create(null);
         for (let i = yearStart; i <= yearEnd; ++i) {
             list[i] = [];
         }

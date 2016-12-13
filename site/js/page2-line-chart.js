@@ -42,7 +42,7 @@ class Page2LineChart {
         const yearStart = Page2LineChart.yearStart, yearEnd = Page2LineChart.yearEnd;
         const obesityDataSet = [];
         for (let i = yearStart; i <= yearEnd; ++i) {
-            const item = this.data.obesityData[i].find(d => d.country === country);
+            const item = this.data.europeObesity[i].find(d => d.country === country);
             if (!item || !item.value) {
                 continue;
             }

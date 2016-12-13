@@ -11,5 +11,6 @@ const SessionKeys = {
     countryCode: "countryCode",
     worldGeoMap: "worldGeoMap",
     tobaccoPolicy: "tobaccoPolicy",
-    smoker: "smoker"
+    smoker: "smoker",
+    ourObesity: "ourObesity"
 };

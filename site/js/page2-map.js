@@ -46,7 +46,7 @@ class Page2Map {
             g.attr("transform", `scale(${sx},${sy}) translate(${tx},${ty})`);
         }
 
-        const obesityData = this.data.obesityData[year];
+        const obesityData = this.data.europeObesity[year];
         const countryFeatures = this.data.countryFeatures;
         const codeMap = this.data.countryCodeMap;
         const projection = d3.geoMercator().scale(400).translate([width / 2, 0]).center([5, 70]);
@@ -152,7 +152,7 @@ class Page2Map {
     __rebuildPatterns(year) {
         const svg = this.svg;
         const defs = svg.append("defs");
-        const obesityData = this.data.obesityData[year];
+        const obesityData = this.data.europeObesity[year];
         const codeMap = this.data.countryCodeMap;
         for (let i = 0; i < obesityData.length; ++i) {
             const entry = obesityData[i];
@@ -190,7 +190,7 @@ class Page2Map {
     __rebuildNormalizedPatterns(year) {
         const svg = this.svg;
         const defs = svg.append("defs");
-        const obesityData = this.data.obesityData[year];
+        const obesityData = this.data.europeObesity[year];
         const codeMap = this.data.countryCodeMap;
         const extent = [Number.MAX_VALUE, Number.MIN_VALUE];
         for (let i = 0; i < obesityData.length; ++i) {
@@ -279,7 +279,7 @@ class Page2Map {
     }
 
     /**
-     *
+     * @static
      * @param obj {*}
      * @param value {*}
      * @return {*}
