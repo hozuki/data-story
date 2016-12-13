@@ -57,6 +57,13 @@
     fill: none;
 }
 
+.d3-line-policy {
+    stroke: green;
+    stroke-width: 2px;
+    stroke-dasharray: 5 5;
+    fill: none;
+}
+
 #svg-line-chart text {
     fill: white;
 }
