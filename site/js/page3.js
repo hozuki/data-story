@@ -10,7 +10,7 @@ function main() {
         navigator.mediaDevices.getUserMedia(mediaConfig).then(function (stream) {
             video.src = window.URL.createObjectURL(stream);
             video.play();
-        });
+        }, errBack);
     } else if (navigator.getUserMedia) {
         navigator.getUserMedia(mediaConfig, function (stream) {
             video.src = stream;
