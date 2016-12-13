@@ -16,7 +16,23 @@ const G = {
      */
     lineChart: null,
     yearStart: Math.max(...[Page2BPChart.yearStart, Page2Map.yearStart, Page2LineChart.yearStart]),
-    yearEnd: Math.min(...[Page2BPChart.yearEnd, Page2Map.yearEnd, Page2LineChart.yearEnd])
+    yearEnd: Math.min(...[Page2BPChart.yearEnd, Page2Map.yearEnd, Page2LineChart.yearEnd]),
+
+    clamp: (x, min, max) => {
+        return x < min ? min : (x > max ? max : x);
+    },
+
+    goNext: () => {
+        G.currentYear = G.clamp(++G.currentYear, G.yearStart, G.yearEnd);
+        G.bpChart.rebuild(G.currentYear);
+        G.map.rebuild(G.currentYear);
+    },
+
+    goPrev: () => {
+        G.currentYear = G.clamp(--G.currentYear, G.yearStart, G.yearEnd);
+        G.bpChart.rebuild(G.currentYear);
+        G.map.rebuild(G.currentYear);
+    }
 };
 
 function main() {
@@ -27,6 +43,9 @@ function main() {
     G.lineChart = new Page2LineChart(data);
     G.bpChart.rebuild(G.currentYear);
     G.map.rebuild(G.currentYear);
+
+    $("#btn-next-year").on("click", G.goNext);
+    $("#btn-prev-year").on("click", G.goPrev);
 }
 
 document.body.onload = main;
@@ -35,17 +54,10 @@ window.addEventListener("keydown", ev => {
     let keyCode = ev.keyCode;
     switch (keyCode) {
         case "A".charCodeAt(0):
-            G.currentYear = clamp(--G.currentYear, G.yearStart, G.yearEnd);
-            G.bpChart.rebuild(G.currentYear);
-            G.map.rebuild(G.currentYear);
+            G.goPrev();
             break;
         case "D".charCodeAt(0):
-            G.currentYear = clamp(++G.currentYear, G.yearStart, G.yearEnd);
-            G.bpChart.rebuild(G.currentYear);
-            G.map.rebuild(G.currentYear);
+            G.goNext();
             break;
-    }
-    function clamp(x, min, max) {
-        return x < min ? min : (x > max ? max : x);
     }
 });

@@ -101,6 +101,12 @@ class Page1LineChart {
 
         g.append("text")
             .attr("text-anchor", "middle")
+            .attr("transform", `translate(${xScale(parseTime(policyYear))},0)`)
+            .text("Tobacco Policy")
+            .style("fill", "green");
+
+        g.append("text")
+            .attr("text-anchor", "middle")
             .attr("transform", `translate(-40,${height / 2}) rotate(-90)`)
             .text("Value");
 
