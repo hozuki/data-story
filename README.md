@@ -35,7 +35,7 @@ interpolations*.
     - `page1-*.js`, `page2-*.js`: various components
   - `css/`: stylesheets
   - `data/`: datasets
-    - `DataSet.xml`: main dataset for the challenge (different from WHO data) with data
+    - `DataSet.xml`: main dataset for the challenge (from OECD, different from WHO data) with data
                      split into multiple files that can be read more easily
 
 I think the code is quite self-explained.
