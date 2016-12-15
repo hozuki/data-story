@@ -43,3 +43,9 @@ I think the code is quite self-explained.
 - [async](https://github.com/caolan/async) for amazing async function execution
 - [bP](http://bl.ocks.org/NPashaP/cd80ab54c52f80c4d84cad0ba9da72c2) (with [Viz](https://github.com/NPashaP/Viz))
   for bP chart
+
+# License
+
+"DESIGNERS" PLEASE READ THIS!
+
+This project can be distributed in [MIT License](LICENSE.md).
