@@ -1,17 +1,22 @@
 $(".overlay-continue").on("click", () => window.location.assign("page1.html"));
 registerNavigation(null, "page1.html");
 
-function asyncLoad(file) {
-    file = "data/" + file;
+function asyncLoad(fileName) {
+    fileName = "data/" + fileName;
     return function (callback) {
-        d3.request(file, (err, request) => {
-            if (err) {
-                callback(err, null);
-                return;
-            }
-            let responseText = request.responseText;
-            callback(null, responseText);
-        });
+        d3.request(fileName,
+            /**
+             * @param err {XMLHttpRequest | null}
+             * @param request {XMLHttpRequest | null}
+             */
+            (err, request) => {
+                if (err) {
+                    callback(err, null);
+                    return;
+                }
+                const responseText = request.responseText;
+                callback(null, responseText);
+            });
     }
 }
 
@@ -38,15 +43,15 @@ async.parallel([
     sessionStorage.setItem(SessionKeys.smoker, results[6]);
     sessionStorage.setItem(SessionKeys.ourObesity, results[7]);
     enableContinue();
+
+    function enableContinue() {
+        $(".overlay-prompt").hide();
+        $(".overlay-continue").show();
+    }
+
+    function displayError(err) {
+        $(".overlay-prompt").text(err)
+            .css("color", "#EFEFEF")
+            .css("animation-iteration-count", 1);
+    }
 });
-
-function enableContinue() {
-    $(".overlay-prompt").hide();
-    $(".overlay-continue").show();
-}
-
-function displayError(err) {
-    $(".overlay-prompt").text(err)
-        .css("color", "#EFEFEF")
-        .css("animation-iteration-count", 1);
-}

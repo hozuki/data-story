@@ -323,6 +323,7 @@ class Page2Map {
      * @return {string}
      */
     static get baseFill() {
+        // We don't use light blue here because light blue is hard to distinguish from the background.
         return "#FFF";
     }
 

@@ -77,6 +77,7 @@ class Page1LineChart {
         makeChart(g, smokerDataSet, "d3-line-smoker", valueDomain);
         makePolicy(g, policyYear, valueDomain);
 
+        // Axes and extra text
         const xAxis = d3.axisBottom()
             .scale(xScale)
             .ticks(5);
@@ -170,7 +171,6 @@ class Page1LineChart {
     }
 
     /**
-     *
      * @return {jQuery}
      */
     get container() {

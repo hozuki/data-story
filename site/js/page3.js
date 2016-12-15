@@ -2,6 +2,8 @@
 
 registerNavigation("page2.html", null);
 
+// https://davidwalsh.name/browser-camera
+
 function main() {
     const video = document.getElementById("video");
     const mediaConfig = {video: true};

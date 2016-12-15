@@ -50,6 +50,7 @@ function main() {
 
 document.body.onload = main;
 
+// Browse data of different years. Hey it changes! :)
 window.addEventListener("keydown", ev => {
     let keyCode = ev.keyCode;
     switch (keyCode) {

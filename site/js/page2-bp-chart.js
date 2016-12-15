@@ -64,6 +64,8 @@ class Page2BPChart {
         this.__removeEventHandlers();
         this.jqSvg.html("");
         const svg = this.svg;
+
+        // Chart title.
         svg.append("text").attr("x", 210).attr("y", 50)
             .attr("class", "header").text(`Obesity in Europe [${year}]`);
 
@@ -79,6 +81,7 @@ class Page2BPChart {
 
         group.call(bpChart);
 
+        // Description for categories.
         group.append("text").attr("x", -50).attr("y", -8).style("text-anchor", "middle").text("Nutrient");
         group.append("text").attr("x", 250).attr("y", -8).style("text-anchor", "middle").text("Country");
 
@@ -88,6 +91,8 @@ class Page2BPChart {
         group.append("line").attr("y1", 610).attr("y2", 610).attr("x1", -100).attr("x2", 0);
         group.append("line").attr("y1", 610).attr("y2", 610).attr("x1", 200).attr("x2", 300);
 
+        // Their classes (mainBars, subBars) cannot be changed (defined in Viz).
+        // Neither can data entry properties (primary, secondary, key, percent).
         group.selectAll(".mainBars")
             .on("mouseenter", this.$onMouseEnter.bind(this))
             .on("mouseout", this.$onMouseOut.bind(this));

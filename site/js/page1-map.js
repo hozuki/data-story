@@ -69,39 +69,14 @@ class Page1Map {
                 return code ? "pointer" : null;
             })
             .on("click", d => {
+                // Show line chart of selected country.
                 const regionID = d.id;
                 const code = Page1Map.findKeyOfValue(ourRegions, regionID);
                 if (!code) {
                     return;
                 }
                 G.lineChart.show(code);
-            })
-        // .on("mouseenter", d => {
-        //     const regionID = d.id;
-        //     const code = Page1Map.findKeyOfValue(ourRegions, regionID);
-        //     if (!code) {
-        //         return;
-        //     }
-        //     const a = d3.select(`#${Page1Map.regionIDPrefix}${regionID}`);
-        //     a.style("fill", "#00F");
-        // })
-        // .on("mouseout", d => {
-        //     const regionID = d.id;
-        //     const code = Page1Map.findKeyOfValue(ourRegions, regionID);
-        //     if (!code) {
-        //         return;
-        //     }
-        //     d3.select(`#${Page1Map.regionIDPrefix}${regionID}`)
-        //         .style("fill", Page1Map.getFillPatternValue(code));
-        // });
-    }
-
-    /**
-     * @memberOf {Page1Map}
-     * @param countryCode
-     */
-    toggleCountry(countryCode) {
-
+            });
     }
 
     __buildPatterns() {
@@ -124,6 +99,7 @@ class Page1Map {
             if (!smokerEntry || !smokerEntry.value) {
                 continue;
             }
+            // Create filled circles in different sizes.
             const w1 = wc(obesityEntry.value), h1 = w1;
             const cx = w1 / 2.5, cy = h1 / 2.5;
             const r1 = 2;
@@ -140,11 +116,11 @@ class Page1Map {
             pattern.append("path")
                 .attr("d", pathData1)
                 .attr("stroke", "none")
-                .attr("fill", "#E94E1B");
+                .attr("fill", Page1Map.paletteColor1);
             pattern.append("path")
                 .attr("d", pathData2)
                 .attr("stroke", "none")
-                .attr("fill", "#237FC3")
+                .attr("fill", Page1Map.paletteColor2)
                 .attr("transform", `translate(${w2 / 2},${h2 / 2})`);
         }
 
@@ -208,6 +184,22 @@ class Page1Map {
 
     static getFillPatternValue(code) {
         return `url(#${Page1Map.patternIDPrefix + code})`;
+    }
+
+    /**
+     * @static
+     * @returns {string}
+     */
+    static get paletteColor1() {
+        return "#E94E1B";
+    }
+
+    /**
+     * @static
+     * @returns {string}
+     */
+    static get paletteColor2() {
+        return "#237FC3";
     }
 
 }
