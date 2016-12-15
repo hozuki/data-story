@@ -79,6 +79,10 @@ class Page1Map {
             });
     }
 
+    /**
+     * Patterns. Patterns reflect density by drawing circles with the same radius, different margin lengths.
+     * @private
+     */
     __buildPatterns() {
         const svg = this.svg;
         const defs = svg.append("defs");
@@ -87,9 +91,9 @@ class Page1Map {
         //console.log(this.data.europeObesity); // WTF
         const smokerData = this.data.smokers[smokerYear];
         const codeMap = this.data.countryCodeMap;
-        const ourCodes = Object.keys(Page1Map.ourRegionIDs);
-        for (let i = 0; i < ourCodes.length; ++i) {
-            const code = ourCodes[i];
+        const specimenCountryCodes = Object.keys(Page1Map.ourRegionIDs);
+        for (let i = 0; i < specimenCountryCodes.length; ++i) {
+            const code = specimenCountryCodes[i];
             const country = Page1Map.findKeyOfValue(codeMap, code);
             const obesityEntry = obesityData.find(d => d.country === country);
             const smokerEntry = smokerData.find(d => d.country === country);
@@ -103,6 +107,7 @@ class Page1Map {
             const w1 = wc(obesityEntry.value), h1 = w1;
             const cx = w1 / 2.5, cy = h1 / 2.5;
             const r1 = 2;
+            // SVG path commands. Don't tell me you don't understand.
             const pathData1 = `M${cx - r1},${cy} A${r1},${r1},0 1 1 ${cx + r1},${cy} A${r1},${r1},0 1 1 ${cx - r1},${cy} Z`;
             const w2 = wc(smokerEntry.value), h2 = w2;
             //const r2 = r1 * Math.sqrt(w2 / w1);
@@ -173,6 +178,10 @@ class Page1Map {
         return "region-";
     }
 
+    /**
+     * Our selected region ID table.
+     * @returns {{us: string, de: string, au: string, nz: string}}
+     */
     static get ourRegionIDs() {
         return {
             "us": "840",

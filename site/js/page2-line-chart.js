@@ -29,7 +29,7 @@ class Page2LineChart {
 
     /**
      * @memberOf {Page2LineChart}
-     * @param country {string}
+     * @param country {string} The country name.
      */
     show(country) {
         if (!country) {
@@ -40,6 +40,8 @@ class Page2LineChart {
         const div = document.querySelector("#div-line-chart");
 
         const yearStart = Page2LineChart.yearStart, yearEnd = Page2LineChart.yearEnd;
+        // Convert the data from the way we stored to the way it will be used. (This kind of sentence is silly, but they
+        // make me add it.)
         const obesityDataSet = [];
         for (let i = yearStart; i <= yearEnd; ++i) {
             const item = this.data.europeObesity[i].find(d => d.country === country);
@@ -57,6 +59,9 @@ class Page2LineChart {
         const yScale = d3.scaleLinear()
             .rangeRound([height, 0])
             .domain([0, 0.25]);
+        /**
+         * @type {string}
+         */
         const lineData = d3.line()
             .x(d => xScale(parseTime(d.year)))
             .y(d => yScale(d.value / 100));
@@ -75,6 +80,7 @@ class Page2LineChart {
             .datum(obesityDataSet)
             .attr("class", "d3-line-obesity")
             .attr("d", lineData);
+        // Axes and other text.
         g.append("g")
             .attr("class", "x_axis")
             .attr("transform", `translate(0,${height})`)

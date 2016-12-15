@@ -55,7 +55,7 @@ class Page2BPChart {
 
     /**
      * @memberOf {Page2BPChart}
-     * @param [year] {number}
+     * @param [year] {number} If not specified, it will draw the data of the last supported year.
      */
     rebuild(year) {
         if (year === void(0)) {
@@ -79,6 +79,7 @@ class Page2BPChart {
             .barSize(35)
             .fill(d => this.colorTable[d.primary]);
 
+        // Show me your chart! (XD)
         group.call(bpChart);
 
         // Description for categories.

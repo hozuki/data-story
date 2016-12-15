@@ -86,6 +86,7 @@ class Page2Map {
                 if (!code) {
                     return;
                 }
+                // Find the corresponding item in the BP chart, and activate it.
                 const intakeData = G.bpChart.bpChart.bars().mainBars.find(bar => bar.key === d.properties.name);
                 if (intakeData) {
                     G.bpChart.$onMouseEnter(intakeData);
@@ -95,6 +96,7 @@ class Page2Map {
                     .style("stroke", Page2Map.hoverFill)
                     .style("fill", Page2Map.hoverFill);
 
+                // The tooltip.
                 {
                     const item = obesityData.find(v => v.country === d.properties.name);
                     const country = d.properties.name;
@@ -116,6 +118,7 @@ class Page2Map {
                     return;
                 }
                 tooltipContent.show();
+                // Get mouse coordinates relative to the document client area.
                 const coordinates = d3.mouse(document.body);
                 tooltipContent
                     .css("left", (coordinates[0] + 10) + "px")
@@ -146,6 +149,7 @@ class Page2Map {
     }
 
     /**
+     * Patterns whose densities reflect absolute value.
      * @param year {number}
      * @private
      */
@@ -184,6 +188,8 @@ class Page2Map {
     }
 
     /**
+     * Build a normalized pattern of the year. The pattern is calculated EACH YEAR and should only be compared in THAT
+     * YEAR. The density varies from 0 (the one with lowest ranking) to near 1 (highest ranking).
      * @param year {number}
      * @private
      */
@@ -192,6 +198,7 @@ class Page2Map {
         const defs = svg.append("defs");
         const obesityData = this.data.europeObesity[year];
         const codeMap = this.data.countryCodeMap;
+        // Calculate the extents. See? Why is this function longer than the one above?
         const extent = [Number.MAX_VALUE, Number.MIN_VALUE];
         for (let i = 0; i < obesityData.length; ++i) {
             const entry = obesityData[i];
@@ -209,12 +216,14 @@ class Page2Map {
                 extent[1] = entry.value;
             }
         }
+        // Magic.
         const rangeLength = extent[1] - extent[0];
         let w, h;
         if (rangeLength <= 0) {
             w = 30 / Math.sqrt(extent[0]);
             h = w;
         }
+        // Now make patterns for each country.
         for (let i = 0; i < obesityData.length; ++i) {
             const entry = obesityData[i];
             const code = codeMap[entry.country];
@@ -225,15 +234,16 @@ class Page2Map {
                 continue;
             }
             if (rangeLength > 0) {
+                // Normalization is here.
                 w = 4 * rangeLength / (entry.value - extent[0]);
                 h = w;
             }
 
-            // dots
+            // Pattern: circles
             const cx = w / 2.5, cy = h / 2.5;
             const r = 1;
             const pathData = `M${cx - r},${cy} A${r},${r},0 1 1 ${cx + r},${cy} A${r},${r},0 1 1 ${cx - r},${cy} Z`;
-            // hatches
+            // Pattern: hatches (yeah we don't use this now)
             //const cx = w / 2, cy = h / 2;
             //const pathData = entry.value > extent[0] ? `M${cx},0 L0,${cy} M${w},0 L0,${h} M${w},${cy} L${cx},${h}` : "";
             defs.append("pattern")

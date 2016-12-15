@@ -43,12 +43,20 @@ class Page1LineChart {
         this._jqSvg = $(this.svg._groups[0]);
     }
 
+    /**
+     * @param code {string} Country code.
+     */
     show(code) {
         this.jqSvg.html("");
         this.overlay.show(); // required for clientWidth/clientHeight
         this.__build(code);
     }
 
+    /**
+     * Build the chart. Please clear the chart area first.
+     * @param code {string} Country code.
+     * @private
+     */
     __build(code) {
         const svg = this.svg;
         const codeMap = this.data.countryCodeMap;

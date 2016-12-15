@@ -10,7 +10,9 @@ There are 2 options to use this project:
 2. A server where the files are deployed.
 
 **Please don't naively launch the pages by double clicking them.** That does not work. (a little detail:
-`file:` protocol, file system security and same-origin policy)
+`file:` protocol, file system security and same-origin policy) You can go to the NW.js or Election download
+page to download the binaries, and put **all** contents under the `site` directory (where `site/index.html` is)
+into the root directory of selected environment (where their main executables are).
 
 Additionally, the browser must support ECMAScript 2015 in Strict Mode. If you don't know how to choose a
 browser that meets this requirement, use Chrome 55 or later. Why? I'm too lazy to write "class-like"
@@ -18,6 +20,10 @@ functions in ES5 so I skip to ES2015.
 
 And, if you want to see something from your webcam in Page 3, you have to use a local browser
 (listed in option 1) and a server **with HTTPS** (due to origin safety check).
+
+If you find the code hard to read (I used lots of ES2015 grammars) in Notepad or some text editors,
+please use IDEs or something with proper highlighting functionality. Definitely needed for the *string
+interpolations*.
 
 ## Project Structure
 
@@ -48,4 +54,4 @@ I think the code is quite self-explained.
 
 "DESIGNERS" PLEASE READ THIS!
 
-This project can be distributed in [MIT License](LICENSE.md).
+This project is distributed in [MIT License](LICENSE.md).
